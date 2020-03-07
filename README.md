@@ -1,14 +1,22 @@
 ---
 INFO
 ---
-Newest Released Version: null  
-Version coming up: 1.0.0-alpha (0% done)  
+Newest Released Version: 1.0.0-alpha1  
+Version coming up: 1.0.0-alpha2 (0% done)  
 License: MIT  
 
 ---
 
-# About
-GameJS is an open-source maybe-soon-to-be app that allows you to download and run web games.
+---
+NEW VERSION INFO
+---
+GameJS 1.0.0-alpha1 has been released!
+[Click here to see the docs](jackkillian.github.io/GameJS)
 
-# How it will work
-GameJS will create a web server on your computer with the game on it.
+---
+
+# About
+GameJS is an open-source collection of code that allows you to run downloaded web-based games.
+
+# How it works
+GameJS creates a web server on your computer with the game on it.
