@@ -2,7 +2,7 @@
 This guide will show you how to make a GameJS compatible game.
   
 1. Download [this repository](https://github.com/Jackkillian/GameJS).
-2. In the __Game__ folder, make a new folder called __<name of your game>__
+2. In the __Game__ folder, make a new folder called __\<name of your game\>__
 3. In the folder you just created, make a file called __config.json__. This file will tell GameJS about your game.
 4. Add the following text to __config.json__:
 ```
