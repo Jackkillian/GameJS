@@ -1,0 +1,10 @@
+{
+    "name":"Sample Game",
+    "author":"Jack Freund (Jackkillian on GitHub)",
+    "copyright":"Copyright (c) 2020 Jack Freund",
+    "credits":"No extra credits.",
+    "files":{
+        "/":"index.html",
+        "/favicon.ico":"favicon.ico"
+    }
+}
