@@ -13,7 +13,7 @@ This update will work on: user interface
 NEW VERSION INFO
 ---
 GameJS 1.0-alpha1 has been released!
-[Click here to see the docs](jackkillian.github.io/GameJS)
+[Click here to see the docs](https://jackkillian.github.io/GameJS "Docs")
 
 ---
   
