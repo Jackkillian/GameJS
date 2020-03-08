@@ -10,9 +10,3 @@ const codeLib = require("./modules/codeLib");
 function runGame (name) {
     codeLib.run("localhost", 3907, name);
 }
-
-function test () {
-    runGame("sampleGame");
-}
-
-test();
