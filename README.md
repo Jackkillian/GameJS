@@ -2,7 +2,7 @@
 INFO
 ---
 Newest Released Version: 1.0-alpha1  
-Version coming up: 1.0-alpha2 (50% done)  
+Version coming up: 1.0-alpha2 (65% done)  
 License: MIT  
 This update will work on: user interface
 
