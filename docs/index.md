@@ -1,5 +1,5 @@
 <br>
-<b>GameJS 1.0-alpha2 released!</b>
+<b>GameJS 1.0-alpha2 released!</b><br>
 <a href="/docs/installation"><button>Installation</button></a><br>
 <a href="/docs/installing-a-game"><button>Installing A Game</button></a><br>
 <a href="/docs/making-a-game"><button>Make a game</button></a><br>
