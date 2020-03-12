@@ -1,8 +1,10 @@
 <br>
+<p>
 <b>GameJS 1.0-alpha2 released!</b><br>
-<a href="/docs/installation"><button>Installation</button></a><br>
-<a href="/docs/installing-a-game"><button>Installing A Game</button></a><br>
-<a href="/docs/making-a-game"><button>Make a game</button></a><br>
+<a href="/docs/installation"><button style=".myButton {box-shadow:inset 0px -3px 7px 0px #29bbff;background:linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);background-color:#2dabf9;border-radius:3px;border:1px solid #0b0e07;display:inline-block; cursor:pointer; color:#ffffff; font-family:Arial; font-size:15px; padding:9px 23px; text-decoration:none; text-shadow:0px 1px 0px #263666; } .myButton:hover { background:linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%); background-color:#0688fa; } .myButton:active { position:relative; top:1px; }">Installation</button></a><br>
+<a href="/docs/installing-a-game"><button style=".myButton {box-shadow:inset 0px -3px 7px 0px #29bbff;background:linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);background-color:#2dabf9;border-radius:3px;border:1px solid #0b0e07;display:inline-block; cursor:pointer; color:#ffffff; font-family:Arial; font-size:15px; padding:9px 23px; text-decoration:none; text-shadow:0px 1px 0px #263666; } .myButton:hover { background:linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%); background-color:#0688fa; } .myButton:active { position:relative; top:1px; }">Installing A Game</button></a><br>
+<a href="/docs/making-a-game"><button style=".myButton {box-shadow:inset 0px -3px 7px 0px #29bbff;background:linear-gradient(to bottom, #2dabf9 5%, #0688fa 100%);background-color:#2dabf9;border-radius:3px;border:1px solid #0b0e07;display:inline-block; cursor:pointer; color:#ffffff; font-family:Arial; font-size:15px; padding:9px 23px; text-decoration:none; text-shadow:0px 1px 0px #263666; } .myButton:hover { background:linear-gradient(to bottom, #0688fa 5%, #2dabf9 100%); background-color:#0688fa; } .myButton:active { position:relative; top:1px; }">Make a game</button></a><br>
+</p>
 <br>
 
 # GameJS
