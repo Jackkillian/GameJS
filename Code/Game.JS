@@ -1,12 +1,40 @@
 /*
 GameJS - Game.JS
-Version 1.0.0-alpha1
+Version 1.0-alpha2
 License: MIT
 Copyright (c) 2020 Jack KA Freund
 */
 
-const codeLib = require("./modules/codeLib");
+const serverLib = require("./modules/serverLib.js");
+const fs = require("fs");
+
+
+function genPort () {
+    return 3908;
+}
+
+function readJSON (filepath) {
+    try {
+        const jsonString = fs.readFileSync(filepath);
+        return JSON.parse(jsonString);
+    } catch(err) {
+        console.log("Error encountered in reading JSON: " + err);
+        return;
+    };
+};
+
+function getGameConfig (name) {
+    return readJSON(`../Games/${name}/config.json`);
+};
+
+function getInstalledGames () {
+    return readJSON("./games.json")["installed"];
+};
+
 
 function runGame (name) {
-    codeLib.run("localhost", 3907, name);
+    var host = 'localhost';
+    var port = genPort();
+    var gameConfig = getGameConfig(name);
+    serverLib.startServer(host, port, name, gameConfig);
 }
