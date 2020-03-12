@@ -1,8 +1,9 @@
----
-GameJS 1.0-alpha1 released!!!!!
-[Click here to see the getting started guide!](/GameJS/docs/getting-started)
-
----
+<br>
+<b>GameJS 1.0-alpha2 released!</b>
+<a href="/docs/installation"><button>Installation</button></a><br>
+<a href="/docs/installing-a-game"><button>Installing A Game</button></a><br>
+<a href="/docs/making-a-game"><button>Make a game</button></a><br>
+<br>
 
 # GameJS
 GameJS is open-source game platform made with NodeJS.
