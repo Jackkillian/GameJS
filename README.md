@@ -2,9 +2,9 @@
 INFO
 ---
 Newest Released Version: 1.0-alpha2  
-Version coming up: 1.0-alpha3 (0% done)  
+Version coming up: 1.0-alpha3 (90% done)  
 License: MIT   
-This update will work on: [NOT PLANNED]
+This update will work on: GameJS Utility
 
 ---
   
