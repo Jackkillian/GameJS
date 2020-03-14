@@ -1,9 +1,10 @@
 {
-    "installed":[
-        {
-	 "name":"sampleGame",
-	 "description":"The sample game for GameJS. Used for test purposes.",
-	 "logo":"GameJS.png"
-	}
-    ]
+  "installed": [
+    {
+      "name": "Sample Game",
+      "folderName": "sampleGame",
+      "description": "The sample game for GameJS. Used for test purposes.",
+      "logo": "logo.png"
+    }
+  ]
 }

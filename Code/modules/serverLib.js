@@ -1,6 +1,6 @@
 /*
 GameJS - serverLib.js
-Version 1.0-alpha2
+Version 1.0-beta1
 License: MIT
 Copyright (c) 2020 Jack KA Freund
 */
@@ -59,7 +59,8 @@ exports.startServer = function (host, port, name, data, gameDir, appFilesDir) {
 
 exports.startAppServer = function (host="localhost", dir="../Code/modules/app-files") { // dir allows the app to run the server with accesibiltiy to the files in the same folder as serverLib.js
     function getInstalledGames () {
-        return readJSON("../Code/games.json")["installed"];
+        var installed = readJSON("../Code/games.json")["installed"];
+        return installed;
     }
     
     function genPorts () {
@@ -67,7 +68,7 @@ exports.startAppServer = function (host="localhost", dir="../Code/modules/app-fi
     		var lastPort = 3907;
     		getInstalledGames().forEach((item) => {
     				lastPort += 1;
-    				ports[item["name"]] = lastPort;
+    				ports[item["folderName"]] = lastPort;
     		});
     		return ports;
     }
@@ -79,7 +80,6 @@ exports.startAppServer = function (host="localhost", dir="../Code/modules/app-fi
     server.set("views", dir);
 
     server.use(express.json());
-    //server.use(express.bodyParser());
     server.use(express.urlencoded({extended:true}));
     
     server.use(express.static(dir));
@@ -92,9 +92,9 @@ exports.startAppServer = function (host="localhost", dir="../Code/modules/app-fi
 
     server.get("/offline", (req, res) => {
         res.render("offline", {
-    				installedGames:getInstalledGames(),
-      			ports:ports,
-						host:host
+            installedGames:getInstalledGames(),
+      		ports:ports,
+			host:host
         });
     });
 
@@ -113,18 +113,18 @@ exports.startAppServer = function (host="localhost", dir="../Code/modules/app-fi
     });
     
     getInstalledGames().forEach(function (game) {
-        server.get(`/${game["name"]}/logo`, (req, res) => {
+        server.get(`/${game["folderName"]}/logo`, (req, res) => {
             try {
-                res.send(fs.readFileSync("../Games/" + game["name"] + "/" + game["logo"]));
+                res.send(fs.readFileSync("../Games/" + game["folderName"] + "/" + game["logo"]));
             } catch (err) {
                 console.log("Error in sending logo: " + err)
                 res.end();
             }
         });
-        server.get(`/${game["name"]}/info`, (req, res) => {
-        		let info = getGameConfig(game["name"]);
+        server.get(`/${game["folderName"]}/info`, (req, res) => {
+        		let info = getGameConfig(game["folderName"]);
             res.render("info", {
-            		pathName:game["name"],
+            		pathName:game["folderName"],
             		name:info["name"],
             		description:info["description"],
             		version:info["version"],
