@@ -1,10 +1,10 @@
 ---
 INFO
 ---
-Newest Released Version: 1.0-alpha2  
-Version coming up: 1.0-beta1 (90% done)  
+Newest Released Version: 1.0-beta1
+Version coming up: 1.0 (0% done)
 License: MIT   
-This update will work on: GameJS Utility
+This update will work on: GameJS Utility with GUI AND resources
 
 ---
   
@@ -12,7 +12,7 @@ This update will work on: GameJS Utility
 ---
 NEW VERSION INFO
 ---
-GameJS 1.0-alpha2 has been released!
+GameJS 1.0-beta1 has been released!
 [Click here to see the docs](https://jackkillian.github.io/GameJS "Docs")
 
 ---
