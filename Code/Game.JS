@@ -1,6 +1,6 @@
 /*
 GameJS - Game.JS
-Version 1.0-alpha2
+Version 1.0-beta1
 License: MIT
 Copyright (c) 2020 Jack KA Freund
 */
