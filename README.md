@@ -4,7 +4,7 @@ INFO
 Newest Released Version: 1.0-beta1
 Version coming up: 1.0 (0% done)
 License: MIT   
-This update will work on: GameJS Utility with GUI AND resources
+This update will work on: Resources (such as Phaser) and GameJS Utility with GUI
 
 ---
   
