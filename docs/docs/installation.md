@@ -1,17 +1,19 @@
-### WARNING: GameJS has only been tested on MacOS and Linux. It may not work on other OSs.
-  
-  
+# GameJS Installation Guide
+```diff
+- WARNING: GameJS has only been tested on MacOS and Linux. It may not work on other OSs.
+```
+    
 ---
   
   
-# Node.js Installation
+### Node.js Installation
 First, install the latest version of Node.js [here](https://nodejs.org "NodeJS website").
   
   
 ---
   
   
-# GameJS Installation
+### GameJS Installation
 Just follow these simple steps to install GameJS!
 1. Download and unzip __[this](https://github.com/Jackkillian/GameJS "GameJS on GitHub")__ repo.
   
@@ -27,7 +29,7 @@ README.md
 GameJS Logo.png
 ```
   
-# Launching the apps
+### Launching the apps
 3. Open your __command line interface__ (such as the Terminal app on MacOS)
   
 4. Cd to the downloaded folder. (example: if it is in your __Downloads__ folder run: ```cd ~/Downloads/GameJS-master```)
@@ -38,7 +40,7 @@ GameJS Logo.png
 ---
   
   
-# Launching the apps
+### Launching the apps
 Go to the unzipped folder you downloaded and run  
 launchApp.sh for the app  
 or  
