@@ -10,6 +10,7 @@ NOTE: If you do not see this option, in System Preferences, go to Keyboard > Sho
 sh launchCLI.sh
 ```
 4. It will then run the CLI Utility.
+  
 #### Linux
 1. Launch the CLI
 2. ```cd``` to the GameJS folder
