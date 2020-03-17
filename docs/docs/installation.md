@@ -1,7 +1,5 @@
-# GameJS Installation Guide
-```diff
-- WARNING: GameJS has only been tested on MacOS and Linux. It may not work on other OSs.
-```
+# Installation - GameJS
+WARNING: GameJS has only been tested on MacOS and Linux. It may not work on other OSs.
     
 ---
   
