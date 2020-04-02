@@ -17,6 +17,17 @@ For documentation, visit
 https://jackkillian.github.io/GameJS/CLI-Utility
 `;
 
+const errMessages = {
+	0:"Could not read game's config file. Please report this to the game developer, or run 'geninstall <game folder name> <game name>' to automatically generate a install file.",
+	1:"Could not read game index. Please report this to the GameJS developer at https://github.com/Jackkillian/GameJS",
+	2:"Could not read/set property. Please report this to the GameJS developer at https://github.com/Jackkillian/GameJS",
+	3:"Could not read/set property. Please report this to the GameJS developer at https://github.com/Jackkillian/GameJS",
+	4:"Could not read/set property. Please report this to the GameJS developer at https://github.com/Jackkillian/GameJS",
+	5:"Could not read/set property. Please report this to the GameJS developer at https://github.com/Jackkillian/GameJS",
+	6:"Could not read/set property. Please report this to the GameJS developer at https://github.com/Jackkillian/GameJS",
+	7:"Could not read/set property. Please report this to the GameJS developer at https://github.com/Jackkillian/GameJS"
+};
+
 function readJSON (filepath) {
     try {
         const jsonString = fs.readFileSync(filepath);
@@ -55,41 +66,66 @@ function startCLI () {
 		
 			install:function (game) {
 				console.log(`Searching for game "${game}..."`);
+				
+				var progress = 0;
+				var error = false;
+				
 				if (fs.existsSync(`./${game}`)) {
-						// load installation config
-						var config = readJSON(`./${game}/install.json`);
-
+					try {
+						// load game config
+						console.log(`Getting game config...`);
+						var config = readJSON(`./${game}/config.json`);
+						progress = 1;
+						
 						// log info
 						console.log(`Found ${config["name"]} in ${config["folderName"]}`);
 						console.log(`Installing game...`);
-
+						
 						// read file for games
 						console.log(`Getting game list...`);
 						var games = readJSON(`../Code/games.json`);
-
+						progress = 2;
+						
 						// add to logo and description to installation config object
 						console.log(`Adding description and logo to config...`);
-						config["description"] = readJSON(`./${game}/config.json`)["description"];
-						config["logo"] = readJSON(`./${game}/config.json`)["logo"];
+						
+						var gameInstall = {};
+
+						gameInstall["name"] = config["name"];
+						progress = 4;
+						gameInstall["folderName"] = config["folderName"];
+						progress = 5;
+						gameInstall["description"] = config["description"];
+						progress = 6;
+						gameInstall["logo"] = config["logo"];
+						progress = 7;
 
 						// add installation config to games object
 						console.log(`Adding config to game list...`);
-						games["installed"].push(config);
-
-						// delete installation file
-						console.log(`Deleting installation files...`);
-						fs.unlinkSync(`./${game}/install.json`);
-
+						games["installed"].push(gameInstall);
+						progress = 8;
+						
 						// move game folder to /Games
 						console.log(`Moving game folder...`);
 						fs.renameSync(`./${game}`, `../Games/${game}`);
-
+						progress = 9;
+						
 						// update game list
 						console.log(`Updating game list...`);
 						writeJSON(`../Code/games.json`, games);
-
+						progress = 10;
+						
 						// log
 						console.log(`Successfully installed ${game}.`);
+					} catch (err) {
+						error = err;
+					} finally {
+						if (error) {
+							console.log("Error encountered:");
+							console.log("Error: " + error);
+							console.log(errMessages[progress]);
+						}
+					}
 				} else {
 						console.log(`Error: game directory "${game}" not found.`);
 						console.log("Please make sure the folder is in the CLI-Utility folder.");

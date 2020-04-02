@@ -1,5 +1,6 @@
 {
     "name":"Sample Game",
+    "folderName":"sampleGame",
     "description":"The sample game for GameJS. Used for test purposes.",
     "version":"1.0",
     "GameJSVersion":"1.0-alpha2",
@@ -9,7 +10,8 @@
     "logo":"logo.png",
     "website":"[none]",
     "resources":{
-    		"/phaser.js":"Phaser"
+    		"/phaser.js":"Phaser",
+    		"/guy.png":"Sprite16-Guy"
     },
     "overrideFiles":false,
     "files":{
