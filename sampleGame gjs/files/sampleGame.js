@@ -24,20 +24,37 @@ var cursors;
 var score = 0;
 var gameOver = false;
 var scoreText;
-
+var puText;
+var powerupEnabled;
+var powerupDuration = 0;
 var game = new Phaser.Game(config);
+
+function decreasePowerUp () {
+    console.log("decreasePowerUp running");
+    if (powerupDuration > 0) {
+        powerupEnabled = true;
+    } else {
+        powerupEnabled = false;
+    }
+    if (powerupEnabled) {
+        powerupDuration -= 1;
+    }
+    setTimeout(decreasePowerUp, 1000);
+}
 
 function preload ()
 {
     this.load.image('sky', 'assets/sky.png');
     this.load.image('ground', 'assets/platform.png');
     this.load.image('star', 'assets/star.png');
+    this.load.image('powerup', 'assets/power-up-star.png');
     this.load.image('bomb', 'assets/bomb.png');
-    this.load.spritesheet('dude', 'assets/dude.png', { frameWidth: 32, frameHeight: 48 });
+    this.load.spritesheet('dude', 'assets/new-dude.png', { frameWidth: 32, frameHeight: 48 });
 }
 
 function create ()
 {
+    setTimeout(decreasePowerUp, 1000);
     //  A simple background for our game
     this.add.image(400, 300, 'sky');
 
@@ -49,9 +66,9 @@ function create ()
     platforms.create(400, 568, 'ground').setScale(2).refreshBody();
 
     //  Now let's create some ledges
-    platforms.create(600, 400, 'ground');
-    platforms.create(50, 250, 'ground');
-    platforms.create(750, 220, 'ground');
+    platforms.create(300, 400, 'ground');
+    platforms.create(50, 150, 'ground');
+    platforms.create(560, 220, 'ground');
 
     // The player and its settings
     player = this.physics.add.sprite(100, 450, 'dude');
@@ -98,26 +115,50 @@ function create ()
 
     });
 
+    powerups = this.physics.add.group({
+        key: 'powerup',
+        repeat: 0,
+        setXY: { x: 325, y: 0, stepX: 70 }
+    });
+
+    powerups.children.iterate(function (child) {
+
+        //  Give each star a slightly different bounce
+        child.setBounceY(Phaser.Math.FloatBetween(0.4, 0.8));
+
+    });
+
     bombs = this.physics.add.group();
 
     //  The score
-    scoreText = this.add.text(16, 16, 'score: 0', { fontSize: '32px', fill: '#000' });
+    scoreText = this.add.text(16, 16, 'Score: 0', { fontSize: '32px', fill: '#000' });
+    highText = this.add.text(400, 16, 'High Score: ' + localStorage.getItem("highScore"), { fontSize: '32px', fill: '#000' });
+    puText = this.add.text(250, 550, 'NO POWERUP', { fontSize: '32px', fill: '#0000FF', fontFamily: 'Impact', backgroundColor: 'white' });
 
     //  Collide the player and the stars with the platforms
     this.physics.add.collider(player, platforms);
     this.physics.add.collider(stars, platforms);
+    this.physics.add.collider(powerups, platforms);
     this.physics.add.collider(bombs, platforms);
 
     //  Checks to see if the player overlaps with any of the stars, if he does call the collectStar function
     this.physics.add.overlap(player, stars, collectStar, null, this);
+
+    this.physics.add.overlap(player, powerups, collectPowerUp, null, this);
 
     this.physics.add.collider(player, bombs, hitBomb, null, this);
 }
 
 function update ()
 {
+    if (powerupEnabled) {
+        puText.setText("POWERUP ENABLED: " + powerupDuration);
+    } else {
+        puText.setText("NO POWERUP");
+    }
     if (gameOver)
     {
+        this.add.text(250, 200, 'GAME OVER', { fontSize: '70px', fill: '#FF0000', fontFamily: 'Impact'});
         return;
     }
 
@@ -146,6 +187,11 @@ function update ()
     }
 }
 
+function randInt(max) {
+  var num = Math.floor(Math.random()*max) + 1;
+  return num;
+}
+
 function collectStar (player, star)
 {
     star.disableBody(true, true);
@@ -156,6 +202,15 @@ function collectStar (player, star)
 
     if (stars.countActive(true) === 0)
     {
+
+        if (Math.random() <= 0.35) {
+          powerups.children.iterate(function (child) {
+
+              child.enableBody(true, randInt(800), 0, true, true);
+
+          });
+        }
+
         //  A new batch of stars to collect
         stars.children.iterate(function (child) {
 
@@ -174,13 +229,35 @@ function collectStar (player, star)
     }
 }
 
+function collectPowerUp (player, powerup)
+{
+    // powerup will disable in 10 sec
+    // even if collected again
+    powerup.disableBody(true, true);
+
+    powerupDuration += 10;
+    powerupEnabled = true;
+}
+
 function hitBomb (player, bomb)
 {
-    this.physics.pause();
+    if (powerupDuration > 0) {
 
-    player.setTint(0xff0000);
+    } else {
+        this.physics.pause();
 
-    player.anims.play('turn');
+        player.setTint(0xff0000);
 
-    gameOver = true;
+        player.anims.play('turn');
+
+        if (localStorage.getItem("highScore")) {
+            if (score > localStorage.getItem("highScore")) {
+                localStorage.setItem("highScore", score);
+            }
+        } else {
+            localStorage.setItem("highScore", score);
+        }
+
+        gameOver = true;
+    }
 }

@@ -16,9 +16,11 @@
 
     <script src="/jquery-3.4.1.min.js"></script>
     <script>
-    function launchGame (game, port) {
+    function launchGame (game, port, type, path) {
 			var serverLaunchData = {
-				name:game
+				name:game,
+                type:type,
+                path:path
 			};
 
 			$.ajax({
@@ -42,16 +44,26 @@
 			});
 		}</script>
 
-    <% installedGames.forEach((game) => { %>
+    <% installedGames.forEach((game) => {console.log(game); if (game.type == 'folder') {%>
     <div class="card" style="float:left; display:inline; margin:10px;">
       <img src="/<%= game["folderName"] %>/logo" alt="logo" width="250px" height="125px" style="width:100%">
       <div class="container">
-        <h4><b><%= game["name"] %></b></h4> 
+        <h4><b><%= game["name"] %></b></h4>
         <p style="width:234px;"><%= game["description"] %></p>
         <a href="/<%= game["folderName"] %>/info"><button>Info</button></a>
         <button onclick="launchGame('<%= game["folderName"] %>', '<%= ports[game["folderName"]] %>')">Launch</button>
       </div>
     </div>
-  <% }); %>
+  <% } else { %>
+      <div class="card" style="float:left; display:inline; margin:10px;">
+        <img src="/GJS/<%= game["folderName"] %>/logo" alt="logo" width="250px" height="125px" style="width:100%">
+        <div class="container">
+          <h4><b><%= game["name"] %></b></h4><h6>(GJS)</h6>
+          <p style="width:234px;"><%= game["description"] %></p>
+          <a href="/GJS/<%= game["folderName"] %>/info"><button>Info</button></a>
+          <button onclick="launchGame('<%= game["folderName"] %>', '<%= ports[game["folderName"]] %>', '<%= game.type %>', '<%= game.path %>')">Launch</button>
+        </div>
+      </div>
+  <% }}); %>
   </body>
 </html>

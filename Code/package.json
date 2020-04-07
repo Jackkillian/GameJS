@@ -9,6 +9,7 @@
   "author": "Jack Freund (Jackkillian on GitHub)",
   "license": "MIT",
   "dependencies": {
+    "adm-zip": "^0.4.14",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
     "express-ejs-layouts": "^2.5.0",
