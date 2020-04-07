@@ -2,7 +2,7 @@
 INFO
 ---
 Newest Released Version: 1.0-beta1  
-Version coming up: 1.0-beta2 (10% done)  
+Version coming up: 1.0-beta2 (50% done)  
 License: MIT   
 This update will work on: Resources and GameJS Game (.gjs) file type handling  
 Resources to be added:
