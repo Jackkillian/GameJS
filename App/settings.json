@@ -1,0 +1,6 @@
+{
+    "gameCatalog":"crazygames.com",
+    "theme":"gjs-light.gjt",
+    "updates":"onLaunch",
+    "notifications":"true"
+}

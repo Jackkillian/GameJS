@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/styles.css">
+    <title>GameJS</title>
+  </head>
+  <body>
+    <div class="header">
+      <a href="about" class="logo">GameJS</a>
+      <div class="header-right">
+        <a class="active" href="/offline">Offline</a>
+        <a href="/online">Online</a>
+      </div>
+    </div>
+
+    <script src="/jquery-3.4.1.min.js"></script>
+    <script>
+    function launchGame (game, port, path) {
+			var serverLaunchData = {
+				name:game,
+                path:path
+			};
+
+			$.ajax({
+				type: "POST",
+				url: "/launchGame",
+				//dataType: "text/json",
+				data: serverLaunchData,
+				success: function(data, textStatus, jqXHR) {
+					console.log(data);
+					console.log(textStatus);
+					console.log(jqXHR);
+					window.open("http://<%= host %>:" + port);
+				},
+				error: function (jqXHR, textStatus, errorThrown){
+					console.log("---Error---");
+					console.log(jqXHR);
+					console.log(textStatus);
+					console.log(errorThrown);
+					console.log("-----------");
+				}
+			});
+		}</script>
+
+    <% installedGames.forEach((game) => {%>
+      <div class="card" style="float:left; display:inline; margin:10px;">
+        <img src="/<%= game["folderName"] %>/logo" alt="logo" width="250px" height="125px" style="width:100%">
+        <div class="container">
+          <h4><b><%= game["name"] %></b></h4>
+          <p style="width:234px;"><%= game["description"] %></p>
+          <a href="/<%= game["folderName"] %>/info"><button>Info</button></a>
+          <button onclick="launchGame('<%= game["folderName"] %>', '<%= ports[game["folderName"]] %>', '<%= game.path %>')">Launch</button>
+        </div>
+      </div>
+  <% }); %>
+  </body>
+</html>

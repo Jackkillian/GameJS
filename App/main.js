@@ -1,5 +1,5 @@
-const {app, BrowserWindow} = require('electron')
-const path = require('path')
+const {app, BrowserWindow} = require('electron');
+const path = require('path');
 
 function createWindow () {
   // Create the browser window
@@ -13,18 +13,17 @@ function createWindow () {
 
   console.log("Opening link");
   mainWindow.loadURL("http://localhost:3907/offline");
-  
+
 }
 
-app.on('ready', createWindow)
-
+app.on('ready', createWindow);
 
 app.on('window-all-closed', function () {
   if (process.platform !== 'darwin') app.quit()
-})
+});
 
 app.on('activate', function () {
   if (BrowserWindow.getAllWindows().length === 0) createWindow()
-})
+});
 
-require("../Code/Game.js").startAppServer();
+require("./Game.js").startAppServer();
