@@ -1,6 +1,6 @@
 {
-  "name": "gamejs-app",
-  "version": "1.0.0-alpha1",
+  "name": "gamejs",
+  "version": "1.0.0-beta2",
   "description": "The unbuilt app for GameJS",
   "main": "main.js",
   "scripts": {
@@ -9,6 +9,28 @@
   "author": "Jack Freund (Jackkillian on GitHub)",
   "license": "MIT",
   "dependencies": {
-    "electron": "^8.1.0"
-  }
+    "adm-zip": "^0.4.14",
+    "ejs": "^3.0.2",
+    "electron": "^8.1.0",
+    "express": "^4.17.1",
+    "express-ejs-layouts": "^2.5.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jackkillian/GameJS.git"
+  },
+  "keywords": [
+    "gamejs",
+    "javascript",
+    "js",
+    "node",
+    "nodejs",
+    "game",
+    "platform"
+  ],
+  "bugs": {
+    "url": "https://github.com/Jackkillian/GameJS/issues"
+  },
+  "homepage": "https://github.com/Jackkillian/GameJS#readme"
 }
